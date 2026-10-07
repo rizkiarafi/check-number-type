@@ -8,7 +8,6 @@ import Agenda from './components/Agenda';
 import Split from './components/Split';
 import Table from './components/Table';
 import CodeWindow from './components/CodeWindow';
-import DownloadPptxButton from './components/DownloadPptxButton';
 
 /* ── Custom Theme Colors from prompt.md ── */
 const PALETTE = {
@@ -155,8 +154,7 @@ function InteractiveClassifier() {
 
 export default function App() {
   return (
-    <>
-      <Deck>
+    <Deck>
       {/* ── Slide 1: Anggota Kelompok 7 Algoritma ── */}
       <Slide
         center
@@ -1432,7 +1430,5 @@ if (angka % 2 === 0) {
         </div>
       </Slide>
     </Deck>
-    <DownloadPptxButton variant="floating" />
-    </>
   );
 }
