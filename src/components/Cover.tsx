@@ -17,7 +17,7 @@ export default function Cover({
   title: ReactNode;
   subtitle?: ReactNode;
   image?: string;
-  foot?: string;
+  foot?: ReactNode;
   nav?: string;
   notes?: string;
 }) {

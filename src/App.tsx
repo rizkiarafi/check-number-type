@@ -8,6 +8,7 @@ import Agenda from './components/Agenda';
 import Split from './components/Split';
 import Table from './components/Table';
 import CodeWindow from './components/CodeWindow';
+import DownloadPptxButton from './components/DownloadPptxButton';
 
 /* ── Custom Theme Colors from prompt.md ── */
 const PALETTE = {
@@ -154,19 +155,156 @@ function InteractiveClassifier() {
 
 export default function App() {
   return (
-    <Deck>
-      {/* ── Slide 1: Cover ── */}
+    <>
+      <Deck>
+      {/* ── Slide 1: Anggota Kelompok 7 Algoritma ── */}
+      <Slide
+        center
+        nav="Kelompok 7"
+        notes="Selamat datang. Presentasi ini disusun oleh Kelompok 7 Algoritma: 1. Daniel Marselano Sukarsah (50426218), 2. Muhamad Fharel Baehaqi (50426536), dan 3. Rizki Arafi Zaidan (50426848)."
+      >
+        <Reveal delay={0.05}>
+          <div className="kicker" style={{ marginBottom: 10, textAlign: 'center' }}>
+            Presentasi Kelompok
+          </div>
+          <h1
+            className="headline"
+            style={{
+              textAlign: 'center',
+              marginInline: 'auto',
+              marginBottom: 12,
+              maxWidth: '24ch',
+            }}
+          >
+            Kelompok 7 <span className="accent-text">Algoritma</span>
+          </h1>
+        </Reveal>
+
+        <Reveal delay={0.12}>
+          <p
+            className="lead"
+            style={{
+              textAlign: 'center',
+              marginInline: 'auto',
+              marginBottom: 'clamp(20px, 3vh, 32px)',
+              maxWidth: '52ch',
+              color: PALETTE.lavender,
+            }}
+          >
+            Daftar Anggota Tim &amp; Nomor Pokok Mahasiswa (NPM)
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.2} y={20}>
+          <div
+            className="mat"
+            style={{
+              maxWidth: 720,
+              width: '100%',
+              marginInline: 'auto',
+              padding: 'clamp(18px, 2.5vw, 26px)',
+              borderRadius: 'var(--radius)',
+              background: 'rgba(40, 12, 55, 0.75)',
+              border: '1px solid rgba(201, 196, 232, 0.22)',
+              boxShadow: '0 20px 60px rgba(10, 2, 16, 0.8)',
+            }}
+          >
+            {/* Header Roster */}
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '50px 1fr 180px',
+                alignItems: 'center',
+                padding: '10px 16px',
+                borderRadius: 8,
+                background: 'rgba(65, 23, 130, 0.4)',
+                borderBottom: '1px solid rgba(201, 196, 232, 0.15)',
+                marginBottom: 10,
+                fontSize: 12,
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                color: PALETTE.orchid,
+              }}
+            >
+              <span style={{ textAlign: 'left', justifySelf: 'start' }}>NO</span>
+              <span>Nama Lengkap</span>
+              <span style={{ textAlign: 'right' }}>NPM</span>
+            </div>
+
+            {/* List Members */}
+            {[
+              { no: '01', name: 'Daniel Marselano Sukarsah', npm: '50426218', color: PALETTE.teal },
+              { no: '02', name: 'Muhamad Fharel Baehaqi', npm: '50426536', color: PALETTE.purple },
+              { no: '03', name: 'Rizki Arafi Zaidan', npm: '50426848', color: PALETTE.lime },
+            ].map((member, idx) => (
+              <div
+                key={idx}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '50px 1fr 180px',
+                  alignItems: 'center',
+                  padding: '14px 16px',
+                  borderRadius: 10,
+                  marginBottom: idx < 2 ? 8 : 0,
+                  background: 'rgba(25, 5, 35, 0.6)',
+                  border: '1px solid rgba(201, 196, 232, 0.12)',
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                <span
+                  style={{
+                    justifySelf: 'start',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: 32,
+                    height: 32,
+                    borderRadius: 999,
+                    background: 'rgba(255,255,255,0.08)',
+                    color: member.color,
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: 13,
+                    fontWeight: 700,
+                  }}
+                >
+                  {member.no}
+                </span>
+
+                <span style={{ fontSize: 16, fontWeight: 600, color: '#fff' }}>
+                  {member.name}
+                </span>
+
+                <span
+                  style={{
+                    textAlign: 'right',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: 15,
+                    fontWeight: 700,
+                    color: member.color,
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  {member.npm}
+                </span>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </Slide>
+
+      {/* ── Slide 2: Cover ── */}
       <Cover
         nav="Cover"
         notes="Halo semuanya! Di presentasi kali ini, kita bakal belajar santai gimana cara komputer mengenali angka: apakah positif, negatif, nol, atau genap dan ganjil."
         kicker="Belajar Logika Pemrograman"
         title={
           <>
-            Cara Komputer <span className="accent-text">Membaca Angka.</span>
+            Cara Kita <span className="accent-text">Membaca Angka.</span>
           </>
         }
-        subtitle="Gimana caranya program tahu angka itu positif, negatif, nol, genap, atau ganjil?"
-        foot="Panduan Praktis Logika Percabangan & Sisa Bagi"
+        subtitle="Gimana caranya kita tahu angka itu positif, negatif, nol, genap, atau ganjil?"
+        foot="Panduan Praktis Logika Klasifikasi Bilangan"
       />
 
       {/* ── Slide 2: Agenda ── */}
@@ -176,7 +314,7 @@ export default function App() {
         kicker="Rencana Kita Hari Ini"
         title="Apa aja yang bakal kita bahas?"
         items={[
-          { title: 'Mulai dari Masukin Angka', hint: 'Langkah awal' },
+          { title: 'Pikirkan Angka Apa yang Mau Kita Cek', hint: 'Langkah awal' },
           { title: 'Ngecek Positif vs Negatif', hint: 'Bandingin sama 0' },
           { title: 'Kapan Angka Dibilang Nol?', hint: 'Titik netral' },
           { title: 'Gantian Cek Genap vs Ganjil', hint: 'Masukin angka baru' },
@@ -195,7 +333,7 @@ export default function App() {
             Pertama, Masukin <span className="accent-text">Angkanya Dulu.</span>
           </>
         }
-        body="Semuanya dimulai saat kita ngetik satu angka ke program. Dari angka ini, komputer bakal langsung mikir: nilainya positif, negatif, atau malah pas nol?"
+        body="Semuanya dimulai saat kita masukin satu angka. Dari angka ini, kita bakal langsung mikir apakah nilainya positif, negatif, atau malah pas nol?"
         media={
           <div
             style={{
@@ -298,7 +436,7 @@ export default function App() {
             color: PALETTE.lavender,
           }}
         >
-          Komputer tinggal ngebandingin angkanya sama angka 0. Caranya simpel banget!
+          Kita tinggal ngebandingin angkanya sama angka 0. Caranya simpel banget!
         </p>
 
         <div
@@ -470,10 +608,10 @@ export default function App() {
               }}
             >
               <div style={{ color: PALETTE.yellow, fontWeight: 700, fontSize: 13, textTransform: 'uppercase', marginBottom: 6 }}>
-                Kondisi di Program
+                Kondisi
               </div>
               <div style={{ fontSize: 24, fontWeight: 700, color: '#fff', fontFamily: 'var(--font-mono)', marginBottom: 8 }}>
-                angka == 0
+                Bukan Keduanya
               </div>
               <p style={{ fontSize: 14, color: PALETTE.lavender, lineHeight: 1.45 }}>
                 Pilihan terakhir saat dicek <code>&gt; 0</code> bukan, dan <code>&lt; 0</code> juga bukan.
@@ -521,13 +659,13 @@ export default function App() {
               }}
             >
               <div style={{ color: PALETTE.periwinkle, fontWeight: 700, fontSize: 13, textTransform: 'uppercase', marginBottom: 6 }}>
-                Hasil di Layar
+                Hasil
               </div>
               <div style={{ fontSize: 22, fontWeight: 700, color: '#fff', marginBottom: 8 }}>
                 "Angka Nol"
               </div>
               <p style={{ fontSize: 14, color: PALETTE.lavender, lineHeight: 1.45 }}>
-                Program langsung nampilin tulisan <strong>"Angka Nol"</strong> buat pengguna.
+                Kita bisa langsung simpulkan bahwa angka tersebut <strong>"Angka Nol"</strong>.
               </p>
             </div>
           </Reveal>
@@ -608,7 +746,7 @@ export default function App() {
             { step: '01', title: 'Masukin Angka', desc: 'Minta angka dari pengguna', color: PALETTE.periwinkle },
             { step: '02', title: 'Cek Nilainya', desc: 'Bandingin: apa > 0, < 0, atau == 0?', color: PALETTE.purple },
             { step: '03', title: 'Tahu Jenisnya', desc: 'Kelompokin: Positif, Negatif, atau Nol', color: PALETTE.teal },
-            { step: '04', title: 'Tampilin Hasil', desc: 'Tampilin jawabannya di layar', color: PALETTE.lime },
+            { step: '04', title: 'Simpulkan Hasil', desc: 'Hasil klasifikasi angka', color: PALETTE.lime },
           ].map((item, idx) => (
             <div
               key={idx}
@@ -680,7 +818,7 @@ if (angka > 0) {
             Sekarang, <span className="accent-text">Genap atau Ganjil?</span>
           </>
         }
-        body="Ketik satu angka bulat lagi. Nah, kali ini komputer bakal cari tahu apakah angka ini genap atau ganjil lewat trik pembagian dengan angka 2."
+        body="Pikirkan satu angka bulat lagi. Nah, kali ini kita bakal cari tahu apakah angka ini genap atau ganjil lewat trik pembagian dengan angka 2."
         media={
           <div
             style={{
@@ -1072,7 +1210,7 @@ if (angka > 0) {
             { step: '02', title: 'Bagi Sama 2', desc: 'Hitung operasi sisa baginya', color: PALETTE.purple },
             { step: '03', title: 'Lihat Sisanya', desc: 'Cek sisanya 0 atau ada sisa?', color: PALETTE.yellow },
             { step: '04', title: 'Tahu Statusnya', desc: 'Sisa 0 itu genap, sisa 1 ganjil', color: PALETTE.teal },
-            { step: '05', title: 'Tampilin Hasil', desc: 'Kasih tahu hasilnya di layar', color: PALETTE.lime },
+            { step: '05', title: 'Hasil', desc: 'Hasil klasifikasi ganjil & genap', color: PALETTE.lime },
           ].map((item, idx) => (
             <div
               key={idx}
@@ -1197,7 +1335,7 @@ if (angka % 2 === 0) {
             maxWidth: '22ch',
           }}
         >
-          Dua Trik Utama <span className="accent-text">Komputer Mikir.</span>
+          Dua Trik Utama <span className="accent-text">Klasifikasi Angka.</span>
         </h2>
         <p
           className="lead"
@@ -1209,7 +1347,7 @@ if (angka % 2 === 0) {
             color: PALETTE.lavender,
           }}
         >
-          Hanya dengan dua aturan logika simpel ini, program komputer bisa ngambil keputusan otomatis tanpa salah.
+          Hanya dengan dua aturan logika simpel ini, kita bisa ngambil keputusan angka yang kita pikirkan termasuk jenis apa.
         </p>
 
         <div
@@ -1294,5 +1432,7 @@ if (angka % 2 === 0) {
         </div>
       </Slide>
     </Deck>
+    <DownloadPptxButton variant="floating" />
+    </>
   );
 }
